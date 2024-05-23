@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+</head>
+<body>
+    <div class="mainGrid"> 
+        <div class="header">To-Do List</div>
+        <div class="nav">
+            <div id="addProject">Add New Project</div>
+        </div>
+        <div class="projects" id="projects">
+            <div id="projectsTopRow">My Projects</div>
+        </div>
+    </div>
+
+    <div id="overlay">
+        <div id="modal">
+            <input type="text" id="titleInput" placeholder="Title of Task">
+            <textarea id="notesInput" cols="30" rows="4" placeholder="Notes"></textarea>
+            <div class="buttonContainer">
+                <button id="submitModal">Add Task</button>
+                <button id="closeModal">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="overlayDetails">
+        <div id="modalDetails">
+            <p id="title"></p>
+            <p id="notes"></p>
+            <div class="buttonContainer">
+                <button id="editModal">Edit</button>
+                <button id="closeModalDetails">Close</button>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
