@@ -1,4 +1,5 @@
 import { chores } from './addDelete';
+import { renderTodos } from "./renderTodos";
 
 const openModalBtn = document.getElementById('addProject');
 const closeModalBtn = document.getElementById('closeModal');
@@ -8,9 +9,6 @@ const overlay = document.getElementById('overlay');
 
 const closeModalDetailsBtn = document.getElementById('closeModalDetails');
 const overlayDetails = document.getElementById('overlayDetails');
-
-// const tiles = document.querySelector('.project');
-
 
 function openModal() {
     openModalBtn.addEventListener('click', (e) => {
@@ -25,41 +23,64 @@ function closeModal() {
     });
 };
 
-function closeModalDetails() {
-    closeModalDetailsBtn.addEventListener('click', (e) => {
-        overlayDetails.style.display = "none";
-    });
-};
+function populateDetails(evt){
+    const detailsTopRow = document.getElementById('detailsTopRow');
+    const notes = document.getElementById('notes');
+    const duration = document.getElementById('duration');
 
-//When you click on a tile, all of the object's values appear in a modal
-function openModalDetails(evt) {
-
-    let title = document.getElementById('title');
-    let notes = document.getElementById('notes');
-    if (evt.target.className === "project"){
-        overlayDetails.style.display = "block";
+    if (evt.target.className === "project") {
         let identify = evt.target.textContent;
+        detailsTopRow.textContent = identify;
         chores.forEach((obj) => {
             if (identify === obj.title){
-                title.textContent = obj.title;
                 notes.textContent = 'Notes: ' + obj.notes;
+                duration.textContent = 'Duration: ' + obj.duration;
+                renderTodos(obj);
             }
-        });
+        });   
     }
-    //Initial solution -- save for now
-    // let title = document.getElementById('title');
-    // let notes = document.getElementById('notes');
-    // if (evt.target.className === "project"){
-    //     overlayDetails.style.display = "block";
-    //     let id = evt.target.getAttribute('id');
-    //     id = id.slice(-1);
-    //     title.textContent = chores[id].title;
-    //     notes.textContent = 'Notes: ' + chores[id].notes;
-    //     } else {
-    //         return;
-    //     };
-
 }
 
+function populateTodosAfterAdd(){
+    const addTodoBtn = document.getElementById('addTodoBtn');
+    addTodoBtn.addEventListener('click', (evt) => {
+        const detailsTopRow = document.getElementById('detailsTopRow');
+        if (evt.target.id === "addTodoBtn") {
+            let identify = detailsTopRow.textContent;
+            chores.forEach((obj) => {
+                if (identify === obj.title){ 
+                    renderTodos(obj);
+                }
+            });   
+        }
+    });
+}
 
-export { openModal, closeModal, openModalDetails, closeModalDetails }
+export { openModal, closeModal, populateDetails, populateTodosAfterAdd }
+
+// function closeModalDetails() {
+//     closeModalDetailsBtn.addEventListener('click', (e) => {
+//         overlayDetails.style.display = "none";
+//     });
+// };
+
+// Not Needed anymore; When you click on a chore, all of the object's values appear in a modal
+// function openModalDetails(evt) {
+
+//     let title = document.getElementById('title');
+//     let notes = document.getElementById('notes');
+//     if (evt.target.className === "project"){
+//         overlayDetails.style.display = "block";
+//         let identify = evt.target.textContent;
+//         chores.forEach((obj) => {
+//             if (identify === obj.title){
+//                 title.textContent = obj.title;
+//                 notes.textContent = 'Notes: ' + obj.notes;
+//             }
+//         });
+//     }
+// };
+
+
+
+

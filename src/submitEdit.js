@@ -2,22 +2,23 @@ import { chores, addProject } from './addDelete';
 import { render } from './render';
 const titleInput = document.getElementById('titleInput');
 const notesInput = document.getElementById('notesInput');
+const durationInput = document.getElementById('duration');
 const submitModalBtn = document.getElementById('submitModal');
-
-
 
 
 function submit() {
     submitModalBtn.addEventListener('click', (e) => {
         const title = titleInput.value;
         const notes = notesInput.value;
+        const duration = durationInput.value;
         if (title === '') {
             alert('You need a title at least')
         } else {
-            addProject(title, notes);
+            addProject(title, notes, duration);
             render();
             titleInput.value = '';
             notesInput.value = '';
+            durationInput.value = '';
         };
     });
 };

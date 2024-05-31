@@ -9,10 +9,11 @@ export default class Project {
     //     this.category = category
     // }
 
-    constructor(title, notes, id) {
+    constructor(title, notes, duration) {
         this.title = title,
         this.notes = notes,
-        this.id = id   
+        this.duration = duration,
+        this.todos = [] 
     };
 
     displayTitle() {

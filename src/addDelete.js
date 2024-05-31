@@ -1,11 +1,9 @@
 import Project from './projectClass.js';
 
 let chores = [];
-let counter = 0;
 
-function addProject(title, notes, id) {
-    id = counter;
-    const newToDo = new Project(title, notes, id);
+function addProject(title, notes, duration) {
+    const newToDo = new Project(title, notes, duration);
     // this.title = 'Laundry';
     // this.description = 'Wash, dry, and fold clothes';
     // this.due = 'Tomorrow';
@@ -16,7 +14,6 @@ function addProject(title, notes, id) {
     
     console.log(newToDo);
     chores.unshift(newToDo);
-    counter += 1; 
     return chores;
 };
 

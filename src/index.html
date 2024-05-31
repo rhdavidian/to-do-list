@@ -8,12 +8,25 @@
 <body>
     <div class="mainGrid"> 
         <div class="header">To-Do List</div>
+
         <div class="nav">
-            <div id="addProject">Add New Project</div>
             <ul id="navList"></ul>
+            <div id="addProject">Add New Project</div>
         </div>
+
         <div class="details" id="projects">
-            <div id="detailsTopRow">Project Details</div>
+            <div id="detailsTopRow"></div>
+            <div id="projectTodos">To-Do List
+                <span>
+                    <input type="text" id="addTodoInput">
+                    <button id="addTodoBtn">Add</button>
+                </span>
+                <div id="todoContainer"></div>
+            </div>
+            <div id="projectDetails">
+                <div id="notes"></div>
+                <div id="duration"></div>
+            </div>
         </div>
     </div>
 
@@ -21,6 +34,7 @@
         <div id="modal">
             <input type="text" id="titleInput" placeholder="Title of Task">
             <textarea id="notesInput" cols="30" rows="4" placeholder="Notes"></textarea>
+            <input type="text" id="durationInput" placeholder="Enter time in hours">
             <div class="buttonContainer">
                 <button id="submitModal">Add Task</button>
                 <button id="closeModal">Cancel</button>
@@ -28,7 +42,7 @@
         </div>
     </div>
 
-    <div id="overlayDetails">
+    <!-- <div id="overlayDetails">
         <div id="modalDetails">
             <p id="title"></p>
             <p id="notes"></p>
@@ -37,7 +51,7 @@
                 <button id="closeModalDetails">Close</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
     
 </body>
