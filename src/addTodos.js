@@ -1,6 +1,7 @@
 // Take user input from box, add it to 'todos' property (array) in the selected object/project
 
-import { chores } from './addDelete'
+import { chores } from './addProject'
+import { deleteTodo } from './deleteTodo';
 const addTodoBtn = document.getElementById('addTodoBtn');
 
 // Takes value from input, pushes it to array in objects

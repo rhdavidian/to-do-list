@@ -12,7 +12,7 @@ export default class Project {
     constructor(title, notes, duration) {
         this.title = title,
         this.notes = notes,
-        this.duration = duration,
+        this.duration = duration + ' hours',
         this.todos = [] 
     };
 

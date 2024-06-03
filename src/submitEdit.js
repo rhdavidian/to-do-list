@@ -1,8 +1,8 @@
-import { chores, addProject } from './addDelete';
+import { chores, addProject } from './addProject';
 import { render } from './render';
 const titleInput = document.getElementById('titleInput');
 const notesInput = document.getElementById('notesInput');
-const durationInput = document.getElementById('duration');
+const durationInput = document.getElementById('durationInput');
 const submitModalBtn = document.getElementById('submitModal');
 
 
@@ -29,7 +29,6 @@ function edit(){
         //input.value = chores[id].property
     //Edit button changes the values referenced by chores[id]
     //re-render array
-    
 }
 
 export { submit }

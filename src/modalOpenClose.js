@@ -1,5 +1,7 @@
-import { chores } from './addDelete';
+import { chores } from './addProject';
 import { renderTodos } from "./renderTodos";
+import { hideTodoInput } from './hideTodoInput';
+import { deleteTodo } from './deleteTodo'
 
 const openModalBtn = document.getElementById('addProject');
 const closeModalBtn = document.getElementById('closeModal');
@@ -31,13 +33,14 @@ function populateDetails(evt){
     if (evt.target.className === "project") {
         let identify = evt.target.textContent;
         detailsTopRow.textContent = identify;
+        hideTodoInput();
         chores.forEach((obj) => {
             if (identify === obj.title){
                 notes.textContent = 'Notes: ' + obj.notes;
                 duration.textContent = 'Duration: ' + obj.duration;
                 renderTodos(obj);
             }
-        });   
+        });  
     }
 }
 

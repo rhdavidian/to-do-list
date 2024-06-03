@@ -1,4 +1,4 @@
-import { chores } from './addDelete'
+import { chores } from './addProject'
 const navList = document.getElementById('navList')
 // const currentProjects = document.getElementById()
 

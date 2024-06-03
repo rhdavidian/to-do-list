@@ -18,7 +18,6 @@ function addProject(title, notes, duration) {
 };
 
 function deleteProject() {
- 
 };
 
 export { deleteProject, addProject, chores };

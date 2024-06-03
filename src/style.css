@@ -11,7 +11,7 @@
    margin: 10px;
    height: 100vh;
    display: grid;
-   grid-template: 75px 1fr / 200px 1fr;
+   grid-template: 75px 1fr / 225px 1fr;
    gap: 8px;
 }
 
@@ -31,6 +31,7 @@
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
+   align-items: center;
    background-color: aquamarine;
    border: 2px solid black;
    border-radius: 10px;
@@ -51,9 +52,54 @@
   cursor: pointer;
  }
 
+ #todoContainer {
+  display: grid;
+  grid-template-columns: 25px 1fr 25px;
+  justify-content: stretch;
+ }
+ .todoDiv,
+ .todoCheck,
+ .todoDel {
+  margin: 5px;
+  padding: 5px;
+  justify-self: start;
+  align-self: center;
+ }
+ /* .todoDiv:hover {
+background-color: azure; 
+cursor: pointer;
+border-radius: 20px;
+} */
+.todoCheck {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 2px solid black;
+  text-align: center;
+}
+.todoCheck:hover {
+  background-color: azure; 
+  cursor: pointer;
+}
+.todoDel {
+  background-color: rgb(197, 21, 21);
+  border-radius: 50%;
+  height: 22px;
+  width: 22px;
+  padding: 7px 5px 5px 6px;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todoDel:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
 .details {
    grid-area: 2 / 2 / 3 / 3;
-   background-color: lawngreen;
+   background-color: rgb(26, 195, 193);
    border: 2px solid black;
    display: grid;
    grid-template: 40px / 1fr 1fr;
@@ -168,8 +214,3 @@ input {
  margin: 5px;
  width: 240px;
 }
-
-/* Test for the appended tile id */
-/* #tile0{
-background-color: blue;
-} */

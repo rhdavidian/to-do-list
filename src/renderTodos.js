@@ -2,21 +2,47 @@ const todoInput = document.getElementById('addTodoInput');
 const projectTitle = document.getElementById('detailsTopRow');
 const todoContainer = document.getElementById('todoContainer');
 
-import { chores } from './addDelete';
+import { deleteTodo } from './deleteTodo';
+import { chores } from './addProject'
 
-//rerender the todo's when the add button is clicked, and when a project is clicked
-//without event listener 
 function renderTodos(obj) {
+    // let counter = 0;
     while (todoContainer.firstChild) {
         todoContainer.removeChild(todoContainer.firstChild)
     }
     let todoArray = obj.todos;
     todoArray.forEach(item => {
         const todoDiv = document.createElement('div');
+        const todoCheck = document.createElement('div');
+        const todoDel = document.createElement('div');
         todoDiv.textContent = item;
-        console.log(todoDiv.textContent);
+        todoDel.innerHTML = 'X';
+        todoDiv.classList.add('todoDiv');
+        todoDel.classList.add('todoDel');
+        todoCheck.classList.add('todoCheck');
+        todoContainer.appendChild(todoCheck);
         todoContainer.appendChild(todoDiv);
-    });      
+        todoContainer.appendChild(todoDel);
+        
+        //try using an event target
+        // todoDel.addEventListener('click', () => {
+        //     let todo = todoDiv.textContent;
+        //     const index = obj.todos.indexOf(todo);
+        //     console.log(index);
+        //     obj.todos.splice(index, 1);
+        //     renderTodos();
+        // });
+    
+            // chores.forEach((obj) => {
+            //     if (projectTitle.textContent === obj.title) {  
+            //         const index = obj.todos.indexOf(todo);
+            //         console.log(index);
+            //         obj.todos.splice(index, 1);
+            //         renderTodos();
+            //     };
+            // });
+    }); 
+    deleteTodo();
 }
 
 export { renderTodos }
