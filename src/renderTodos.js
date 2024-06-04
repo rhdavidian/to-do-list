@@ -23,24 +23,6 @@ function renderTodos(obj) {
         todoContainer.appendChild(todoCheck);
         todoContainer.appendChild(todoDiv);
         todoContainer.appendChild(todoDel);
-        
-        //try using an event target
-        // todoDel.addEventListener('click', () => {
-        //     let todo = todoDiv.textContent;
-        //     const index = obj.todos.indexOf(todo);
-        //     console.log(index);
-        //     obj.todos.splice(index, 1);
-        //     renderTodos();
-        // });
-    
-            // chores.forEach((obj) => {
-            //     if (projectTitle.textContent === obj.title) {  
-            //         const index = obj.todos.indexOf(todo);
-            //         console.log(index);
-            //         obj.todos.splice(index, 1);
-            //         renderTodos();
-            //     };
-            // });
     }); 
     deleteTodo();
 }

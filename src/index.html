@@ -21,14 +21,13 @@
                     <input type="text" id="addTodoInput">
                     <button id="addTodoBtn">Add</button>
                 </span>
-                <div id="todoContainer">
-                    <!-- <div class="todoDel"></div> -->
-                </div>
+                <div id="todoContainer"></div>
                 
             </div>
             <div id="projectDetails">
                 <div id="notes"></div>
-                <div id="duration"></div>
+                <span id="durationSpan">Duration (hours):&nbsp;<div id="duration"></div></span>
+                <button id="editDeleteBtn">Edit/Delete</button>
             </div>
         </div>
     </div>
@@ -46,28 +45,17 @@
     </div>
 
     <div id="overlayEdit">
-        <div id="modal">
-            <input type="text" >
-            <textarea cols="30" rows="4"></textarea>
-            <input type="number" id="durationInput" placeholder="Enter time in hours">
+        <div id="modalEdit">
+            <input type="text" id="titleEdit">
+            <textarea cols="30" id="notesEdit" rows="4"></textarea>
+            <input type="number" id="durationEdit" placeholder="Enter time in hours">
             <div class="buttonContainer">
-                <button id="submitModal">Add Task</button>
-                <button id="closeModal">Cancel</button>
+                <button id="submitEdit">Submit</button>
+                <button id="closeEdit">Cancel</button>
+                <button id="deleteProject">Delete Project</button>
             </div>
         </div>
     </div>
-
-    <!-- <div id="overlayDetails">
-        <div id="modalDetails">
-            <p id="title"></p>
-            <p id="notes"></p>
-            <div class="buttonContainer">
-                <button id="editModal">Edit</button>
-                <button id="closeModalDetails">Close</button>
-            </div>
-        </div>
-    </div> -->
-
     
 </body>
 </html>

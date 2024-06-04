@@ -36,7 +36,6 @@
    border: 2px solid black;
    border-radius: 10px;
    padding: 5px;
-   /* text-align: center; */
 }
 
 #navList {
@@ -81,6 +80,7 @@ border-radius: 20px;
   background-color: azure; 
   cursor: pointer;
 }
+
 .todoDel {
   background-color: rgb(197, 21, 21);
   border-radius: 50%;
@@ -124,8 +124,12 @@ border-radius: 20px;
   display: flex;
   flex-direction: column;
 }
-span {
-  display:inline-block;
+span,
+#duration {
+  display: inline-block;
+}
+#durationSpan{
+  display: none;
 }
 #projectDetails {
   grid-area: 2/2/3/3;
@@ -133,6 +137,9 @@ span {
   border: 2px solid black;
   padding: 5px;
   text-align: center;
+}
+#editDeleteBtn {
+  display: none;
 }
 
 /* play with autofit and autfill */
@@ -150,7 +157,7 @@ span {
 
 /* Modal Style */
 #overlay,
-#overlayDetails {
+#overlayEdit {
   display: none; /* hide modal initially */
   position: absolute; /* position to allow modal to cover over it */
   background: rgba(0, 0, 0, 0.2); /* gray out the background when modal appears */
@@ -161,7 +168,7 @@ span {
 }
 
 #modal,
-#modalDetails {
+#modalEdit {
  display: flex;
  flex-direction: column;
  align-items: center;
@@ -179,8 +186,7 @@ span {
 
 #closeModal, 
 #submitModal,
-#editModal,
-#closeModalDetails {
+#editModal {
   /* display: inline-block; */
   cursor: pointer;
   padding: 8px;
@@ -195,7 +201,6 @@ span {
 }
 
 #closeModal:hover, 
-#closeModalDetails:hover,
 #editModal:hover,
 #submitModal:hover {
     background: gray;

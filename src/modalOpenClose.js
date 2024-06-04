@@ -1,28 +1,57 @@
 import { chores } from './addProject';
 import { renderTodos } from "./renderTodos";
 import { hideTodoInput } from './hideTodoInput';
-import { deleteTodo } from './deleteTodo'
+import { renderEdit } from './submitEdit';
 
-const openModalBtn = document.getElementById('addProject');
-const closeModalBtn = document.getElementById('closeModal');
-const titleInput = document.getElementById('titleInput');
-const notesInput = document.getElementById('notesInput');
 const overlay = document.getElementById('overlay');
 
-const closeModalDetailsBtn = document.getElementById('closeModalDetails');
-const overlayDetails = document.getElementById('overlayDetails');
 
 function openModal() {
-    openModalBtn.addEventListener('click', (e) => {
+    const openModalBtn = document.getElementById('addProject');
+    openModalBtn.addEventListener('click', () => {
         overlay.style.display = "block";
     });
 };
 function closeModal() {
-    closeModalBtn.addEventListener('click', (e) => {
+    const titleInput = document.getElementById('titleInput');
+    const notesInput = document.getElementById('notesInput');
+    const durationInput = document.getElementById('durationInput');
+    const closeModalBtn = document.getElementById('closeModal');
+    closeModalBtn.addEventListener('click', () => {
         titleInput.value = '';
         notesInput.value = '';
+        durationInput.value = '';
         overlay.style.display = "none";
     });
+};
+
+function openEditModal() {
+    const titleEdit = document.getElementById('titleEdit');
+    const notesEdit = document.getElementById('notesEdit');
+    const durationEdit = document.getElementById('durationEdit');
+
+    const notes = document.getElementById('notes');
+    const duration = document.getElementById('duration');
+    const title = document.getElementById('detailsTopRow')
+    const overlayEdit = document.getElementById('overlayEdit');
+    const editDeleteBtn = document.getElementById('editDeleteBtn');
+    editDeleteBtn.addEventListener('click', () => {
+        overlayEdit.style.display = "block";
+        titleEdit.value = title.textContent;
+        notesEdit.value = notes.textContent;
+        durationEdit.value = duration.textContent;
+    });
+}
+function closeEditModal() {
+    const overlayEdit = document.getElementById('overlayEdit');
+    const submitEdit = document.getElementById('submitEdit');
+    const closeEdit = document.getElementById('closeEdit');
+    closeEdit.addEventListener('click', (e) => {
+        overlayEdit.style.display = "none";
+    });
+    submitEdit.addEventListener('click', () => {
+        overlayEdit.style.display = 'none';
+    })
 };
 
 function populateDetails(evt){
@@ -37,8 +66,10 @@ function populateDetails(evt){
         chores.forEach((obj) => {
             if (identify === obj.title){
                 notes.textContent = 'Notes: ' + obj.notes;
-                duration.textContent = 'Duration: ' + obj.duration;
+                duration.textContent = obj.duration;
                 renderTodos(obj);
+                renderEdit();
+                openEditModal();
             }
         });  
     }
@@ -59,31 +90,5 @@ function populateTodosAfterAdd(){
     });
 }
 
-export { openModal, closeModal, populateDetails, populateTodosAfterAdd }
-
-// function closeModalDetails() {
-//     closeModalDetailsBtn.addEventListener('click', (e) => {
-//         overlayDetails.style.display = "none";
-//     });
-// };
-
-// Not Needed anymore; When you click on a chore, all of the object's values appear in a modal
-// function openModalDetails(evt) {
-
-//     let title = document.getElementById('title');
-//     let notes = document.getElementById('notes');
-//     if (evt.target.className === "project"){
-//         overlayDetails.style.display = "block";
-//         let identify = evt.target.textContent;
-//         chores.forEach((obj) => {
-//             if (identify === obj.title){
-//                 title.textContent = obj.title;
-//                 notes.textContent = 'Notes: ' + obj.notes;
-//             }
-//         });
-//     }
-// };
-
-
-
+export { openModal, closeModal, populateDetails, populateTodosAfterAdd, openEditModal, closeEditModal }
 
