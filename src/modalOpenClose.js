@@ -1,7 +1,8 @@
 import { chores } from './addProject';
-import { renderTodos } from "./renderTodos";
+import { renderCompletedTodos, renderTodos } from "./renderTodos";
 import { hideTodoInput } from './hideTodoInput';
 import { renderEdit } from './submitEdit';
+import { revertCompleted } from './addTodos';
 
 const overlay = document.getElementById('overlay');
 
@@ -25,6 +26,11 @@ function closeModal() {
     });
 };
 
+function closeAfterSubmitNew(){
+        overlay.style.display = 'none';
+        openEditModal();
+}
+
 function openEditModal() {
     const titleEdit = document.getElementById('titleEdit');
     const notesEdit = document.getElementById('notesEdit');
@@ -46,10 +52,14 @@ function closeEditModal() {
     const overlayEdit = document.getElementById('overlayEdit');
     const submitEdit = document.getElementById('submitEdit');
     const closeEdit = document.getElementById('closeEdit');
+    const deleteBtn = document.getElementById('deleteProject');
     closeEdit.addEventListener('click', (e) => {
         overlayEdit.style.display = "none";
     });
     submitEdit.addEventListener('click', () => {
+        overlayEdit.style.display = 'none';
+    })
+    deleteBtn.addEventListener('click', () => {
         overlayEdit.style.display = 'none';
     })
 };
@@ -65,11 +75,13 @@ function populateDetails(evt){
         hideTodoInput();
         chores.forEach((obj) => {
             if (identify === obj.title){
-                notes.textContent = 'Notes: ' + obj.notes;
+                notes.textContent = obj.notes;
                 duration.textContent = obj.duration;
                 renderTodos(obj);
+                renderCompletedTodos(obj);
                 renderEdit();
                 openEditModal();
+                // revertCompleted();
             }
         });  
     }
@@ -84,11 +96,12 @@ function populateTodosAfterAdd(){
             chores.forEach((obj) => {
                 if (identify === obj.title){ 
                     renderTodos(obj);
+                    renderCompletedTodos(obj)
                 }
             });   
         }
     });
 }
 
-export { openModal, closeModal, populateDetails, populateTodosAfterAdd, openEditModal, closeEditModal }
+export { openModal, closeModal, populateDetails, populateTodosAfterAdd, openEditModal, closeEditModal, closeAfterSubmitNew }
 

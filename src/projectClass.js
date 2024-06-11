@@ -1,11 +1,8 @@
 export default class Project {
     // constructor (title = 'No Title', description, due, priority, duration, notes, category) {
-    //     this.title = title,
     //     this.description = description,
     //     this.due = due,
     //     this.priority = priority,
-    //     this.duration = duration,
-    //     this.notes = notes,
     //     this.category = category
     // }
 
@@ -13,10 +10,7 @@ export default class Project {
         this.title = title,
         this.notes = notes,
         this.duration = duration,
-        this.todos = [] 
+        this.todos = [],
+        this.completed = []
     };
-
-    displayTitle() {
-        return this.title;
-    }
 };

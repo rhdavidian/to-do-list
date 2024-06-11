@@ -3,26 +3,29 @@
  }
  body {
    margin: 0;
-   font-family: Arial, Helvetica, sans-serif;
+   /* font-family: Arial, Helvetica, sans-serif; */
+   /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    background-color: bisque;
  }
  
 .mainGrid {
-   margin: 10px;
+   margin: 18px;
    height: 100vh;
    display: grid;
-   grid-template: 75px 1fr / 225px 1fr;
-   gap: 8px;
+   grid-template: 65px 1fr / 250px 1fr;
+   gap: 5px;
 }
 
 .header {
    grid-area: 1 / 1 / 2 / 3;
-   background-color: aqua;
-   font-size: larger;
+   background-color: rgb(185, 233, 254);
+   font-size: 24pt;
    display:flex;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
    align-items: center;
    justify-content: center;
-   border: 2px solid black;
+   border: 2px solid gray;
    border-radius: 10px;
    padding: 5px;
 }
@@ -32,26 +35,51 @@
    flex-direction: column;
    justify-content: flex-start;
    align-items: center;
-   background-color: aquamarine;
-   border: 2px solid black;
+   text-align: center;
+   background-color: rgb(235, 253, 255);
+   border: 2px solid gray;
    border-radius: 10px;
-   padding: 5px;
+   padding: 10px 5px;
+}
+#addProject {
+  border-radius: 20px;
+  border: 2px solid grey;
+  background-color: cornflowerblue;
+  padding: 10px;
+  margin: 12px;
+}
+.currentProjects {
+  margin: 20px 8px 8px 8px;
+  text-decoration: underline;
+}
+#addProject:hover {
+  background-color: grey;
+  cursor: pointer;
 }
 
 #navList {
   list-style-type: none;
-  margin: 5px;
+  margin: 8px;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  justify-items: start;
+  text-align: left;
+  /* flex-direction: column; */
+  /* align-items: flex-start;  */
+  width: 225px;
 }
+
 .project {
-  margin: 4px;
-  border-radius: 20px;
+  margin: 5px;
+  padding-right: 35px;
 }
 .project:hover {
   background-color: lightcyan;
   cursor: pointer;
  }
 
- #todoContainer {
+ #todoContainer,
+ #completedTodos {
   display: grid;
   grid-template-columns: 25px 1fr 25px;
   justify-content: stretch;
@@ -64,20 +92,16 @@
   justify-self: start;
   align-self: center;
  }
- /* .todoDiv:hover {
-background-color: azure; 
-cursor: pointer;
-border-radius: 20px;
-} */
+
 .todoCheck {
-  height: 15px;
-  width: 15px;
+  height: 19px;
+  width: 19px;
   border-radius: 50%;
   border: 2px solid black;
   text-align: center;
 }
 .todoCheck:hover {
-  background-color: azure; 
+  background-color: rgb(80, 104, 191);
   cursor: pointer;
 }
 
@@ -97,12 +121,26 @@ border-radius: 20px;
   border: 1px solid black;
 }
 
+.completed {
+  text-decoration: line-through;
+  font-style: italic;
+  
+}
+.bubbleFill {
+  height: 19px;
+  width: 19px;
+  border-radius: 50%;
+  border: 2px solid black;
+  text-align: center;
+  background-color: rgb(6, 58, 177);
+}
+
 .details {
    grid-area: 2 / 2 / 3 / 3;
-   background-color: rgb(26, 195, 193);
-   border: 2px solid black;
+   background-color: rgb(235, 253, 255);
+   border: 2px solid gray;
    display: grid;
-   grid-template: 40px / 1fr 1fr;
+   grid-template: 55px / 1fr 1fr;
    border-radius: 10px;
    padding: 5px;
    gap: 5px;
@@ -111,6 +149,7 @@ border-radius: 20px;
   grid-area: 1/1/2/-1;
   text-align: center;
   font-size: x-large;
+  margin: 10px;
   display:flex;
   align-items: center;
   justify-content: center;
@@ -118,42 +157,44 @@ border-radius: 20px;
 #projectTodos{
   grid-area: 2/1/3/2;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid grey;
   padding: 5px;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
+#projectDetails {
+  grid-area: 2/2/3/3;
+  border-radius: 10px;
+  border: 2px solid grey;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#notesSpan,
+#durationSpan{
+  font-weight: 600;
+}
 span,
-#duration {
-  display: inline-block;
+#duration,
+#notes {
+  display: inline;
+  font-weight: 400;
+  align-self: flex-start;
+}
+#todoInputSpan{
+  align-self: center;
 }
 #durationSpan{
   display: none;
 }
-#projectDetails {
-  grid-area: 2/2/3/3;
-  border-radius: 10px;
-  border: 2px solid black;
-  padding: 5px;
-  text-align: center;
-}
+
 #editDeleteBtn {
   display: none;
 }
-
-/* play with autofit and autfill */
-/* .project {
-  height: 80px;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  border-radius: 15px;
-  margin: 8px;
-  border: 2px solid black;
-  text-align: center;
-} */
 
 /* Modal Style */
 #overlay,
@@ -172,50 +213,64 @@ span,
  display: flex;
  flex-direction: column;
  align-items: center;
- justify-content: center;
- border-radius: 25px;
+ justify-content: space-around;
+ border-radius: 20px;
  background: #FFF;
  margin: 0 auto; /* center the modal */
  padding: 9px;
- width: 600px;
+ width: 500px;
+ height: 350px;
  text-align: center;
  position: relative; /* set relative to overlay position */
  top: 20%;
  box-shadow: 10px 5px 5px #000; /* give modal a hover effect */
 }
 
-#closeModal, 
-#submitModal,
-#editModal {
-  /* display: inline-block; */
+button {
   cursor: pointer;
-  padding: 8px;
+  padding: 9px;
   background: rgb(242, 101, 25);
   text-decoration: none;
   border-radius: 25px;
-  width: 75px;
 }
 #submitModal,
-#editModal {
+#editDeleteBtn {
  background-color: cornflowerblue;
+ text-align: center;
+}
+#addTodoBtn {
+  background-color: azure;
+  padding: 5px 8px;
 }
 
+#editDeleteBtn {
+  width: auto;
+}
+
+#submitModal,
+#submitEdit{
+  background-color: cornflowerblue;
+}
+#closeEdit{
+  background-color: lightgray;
+}
 #closeModal:hover, 
-#editModal:hover,
-#submitModal:hover {
+#editDeleteBtn:hover,
+#submitModal:hover,
+#addTodoBtn:hover,
+#submitEdit:hover,
+#closeEdit:hover,
+#deleteProject:hover {
     background: gray;
     color: #FFF;
 }
-
 #closeModal:focus {
     outline: none;
-}
-#addProject:hover {
-  background-color: grey;
-  cursor: pointer;
 }
 
 input {
  margin: 5px;
- width: 240px;
+ width: 260px;
+ border-radius: 10px;
+ padding: 5px;
 }

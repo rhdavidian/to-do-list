@@ -1,4 +1,4 @@
-import { addProject, deleteProject } from "./addProject";
+import { addProject, deleteProject} from "./addProject";
 import { render } from './render';
 import { submit, editSubmit } from './submitEdit';
 import './style.css';
@@ -16,9 +16,6 @@ render();
 const projects = document.getElementById('navList');
 projects.addEventListener('click', populateDetails);
 
-// const addTodoBtn = document.getElementById('addTodoBtn');
-// projects.addEventListener('click', openModalDetails);
-
 submit();
 editSubmit();
 addTodo();
@@ -26,4 +23,6 @@ populateTodosAfterAdd();
 openModal();
 closeModal();
 closeEditModal();
+deleteProject();
+
 

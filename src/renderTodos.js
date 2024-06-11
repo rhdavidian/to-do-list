@@ -1,15 +1,12 @@
-const todoInput = document.getElementById('addTodoInput');
-const projectTitle = document.getElementById('detailsTopRow');
+import { deleteCompletedTodo, deleteTodo } from './deleteTodo';
+import { moveToCompleted, revertCompleted } from './addTodos';
 const todoContainer = document.getElementById('todoContainer');
 
-import { deleteTodo } from './deleteTodo';
-import { chores } from './addProject'
-
 function renderTodos(obj) {
-    // let counter = 0;
-    while (todoContainer.firstChild) {
+    while (todoContainer.firstChild ) {
         todoContainer.removeChild(todoContainer.firstChild)
     }
+
     let todoArray = obj.todos;
     todoArray.forEach(item => {
         const todoDiv = document.createElement('div');
@@ -25,6 +22,31 @@ function renderTodos(obj) {
         todoContainer.appendChild(todoDel);
     }); 
     deleteTodo();
+    moveToCompleted();
+    revertCompleted();
 }
 
-export { renderTodos }
+function renderCompletedTodos(obj) {
+    const completedTodos = document.getElementById('completedTodos');
+    while (completedTodos.firstChild) {
+        completedTodos.removeChild(completedTodos.firstChild);
+    }
+    let completedArray = obj.completed;
+    completedArray.forEach(item => {
+        const todoDiv = document.createElement('div');
+        const todoCheck = document.createElement('div');
+        const todoDel = document.createElement('div');
+        todoDiv.textContent = item;
+        todoDel.innerHTML = 'X';
+        todoDiv.classList.add('completed', 'todoDiv');
+        todoDel.classList.add('placeholder', 'todoDel');
+        todoCheck.classList.add('bubbleFill', 'todoCheck');
+        completedTodos.appendChild(todoCheck);
+        completedTodos.appendChild(todoDiv);
+        completedTodos.appendChild(todoDel);
+    }); 
+    revertCompleted();
+    deleteCompletedTodo();
+}
+
+export { renderTodos, renderCompletedTodos }
