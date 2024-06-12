@@ -35,10 +35,12 @@ function openEditModal() {
     const titleEdit = document.getElementById('titleEdit');
     const notesEdit = document.getElementById('notesEdit');
     const durationEdit = document.getElementById('durationEdit');
+    const dueDateEdit = document.getElementById('dueDateEdit');
 
     const notes = document.getElementById('notes');
     const duration = document.getElementById('duration');
-    const title = document.getElementById('detailsTopRow')
+    const title = document.getElementById('detailsTopRow');
+    const dueDate = document.getElementById('dueDate')
     const overlayEdit = document.getElementById('overlayEdit');
     const editDeleteBtn = document.getElementById('editDeleteBtn');
     editDeleteBtn.addEventListener('click', () => {
@@ -46,6 +48,7 @@ function openEditModal() {
         titleEdit.value = title.textContent;
         notesEdit.value = notes.textContent;
         durationEdit.value = duration.textContent;
+        dueDateEdit.value = dueDate.textContent;
     });
 }
 function closeEditModal() {
@@ -68,6 +71,7 @@ function populateDetails(evt){
     const detailsTopRow = document.getElementById('detailsTopRow');
     const notes = document.getElementById('notes');
     const duration = document.getElementById('duration');
+    const dueDate = document.getElementById('dueDate');
 
     if (evt.target.className === "project") {
         let identify = evt.target.textContent;
@@ -77,11 +81,11 @@ function populateDetails(evt){
             if (identify === obj.title){
                 notes.textContent = obj.notes;
                 duration.textContent = obj.duration;
+                dueDate.textContent = obj.dueDate;
                 renderTodos(obj);
                 renderCompletedTodos(obj);
                 renderEdit();
                 openEditModal();
-                // revertCompleted();
             }
         });  
     }

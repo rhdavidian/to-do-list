@@ -28,7 +28,8 @@
             </div>
             <div id="projectDetails">
                 <span id="notesSpan">Notes:&nbsp;<div id="notes"></div></span>
-                <span  id="durationSpan">Duration (hours):&nbsp;<div id="duration"></div></span>
+                <span id="durationSpan">Duration (hours):&nbsp;<div id="duration"></div></span>
+                <span id="dueDateSpan">Due Date:&nbsp;<div id="dueDate"></div></span>
                 <button id="editDeleteBtn">Edit/Delete</button>
             </div>
         </div>
@@ -36,9 +37,10 @@
 
     <div id="overlay">
         <div id="modal">
-            <input type="text" id="titleInput" placeholder="Title of Task" maxlength="38">
-            <textarea id="notesInput" cols="30" rows="6" placeholder="Notes"></textarea>
-            <input type="number" id="durationInput" placeholder="Enter time in hours">
+            <div class="labels">Title:&nbsp;<input type="text" id="titleInput" placeholder="ex. Deep Clean Kitchen" maxlength="38"></div>
+            <div class="labels">Notes:&nbsp;<textarea id="notesInput" cols="30" rows="6" placeholder="Don't forget to..."></textarea></div>
+            <div class="labels">Duration:&nbsp;<input type="number" id="durationInput" placeholder="(Hours)" step=".25"></div>
+            <div class="labels">Due Date:&nbsp;<input type="text" id="dueDateInput" placeholder="mm/dd/yyyy"></div>
             <div class="buttonContainer">
                 <button id="submitModal">Add Task</button>
                 <button id="closeModal">Cancel</button>
@@ -48,9 +50,18 @@
 
     <div id="overlayEdit">
         <div id="modalEdit">
-            <input type="text" id="titleEdit" maxlength="38">
-            <textarea cols="30" id="notesEdit" rows="6"></textarea>
-            <input type="number" id="durationEdit" placeholder="Enter time in hours">
+            <div class="labels">Title:&nbsp;
+            <input type="text" id="titleEdit" maxlength="40">
+            </div>
+            <div class="labels">Notes:&nbsp; 
+            <textarea cols="30" id="notesEdit" rows="4"></textarea>
+            </div>
+            <div class="labels">Duration:&nbsp; 
+            <input type="number" id="durationEdit" placeholder="Enter time in hours" step=".25">
+            </div>
+            <div class="labels">Due Date:&nbsp; 
+            <input type="text" id="dueDateEdit" placeholder="mm/dd/yyyy">
+            </div>
             <div class="buttonContainer">
                 <button id="submitEdit">Submit</button>
                 <button id="closeEdit">Cancel</button>

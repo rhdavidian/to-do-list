@@ -7,9 +7,9 @@ import { openModal, closeModal, populateDetails, populateTodosAfterAdd, closeEdi
 import { hideTodoInput } from "./hideTodoInput";
 
 hideTodoInput();
-addProject('Laundry', 'Wash, dry, fold', '1.5');
+addProject('Laundry', 'Wash, dry, fold', '1.5', '12/10/2024');
 addProject('Clean car', 'Throw out junk and vacuum the floor mats', '2');
-addProject('Dishes', 'Unload clean dishes, reload dishwasher, run it', '.5');
+// addProject('Dishes', 'Unload clean dishes, reload dishwasher, run it', '.5' );
 render();
 
 // don't delete projects const

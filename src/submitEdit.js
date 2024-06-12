@@ -9,20 +9,24 @@ const titleInput = document.getElementById('titleInput');
 const notesInput = document.getElementById('notesInput');
 const durationInput = document.getElementById('durationInput');
 const submitModalBtn = document.getElementById('submitModal');
+const dueDateInput = document.getElementById('dueDateInput');
 
 function submit() {
     submitModalBtn.addEventListener('click', () => {
         const title = titleInput.value;
         const notes = notesInput.value;
         const duration = durationInput.value;
-        if (title === '') {
-            alert('You need a title at least')
+        const dueDate = dueDateInput.value;
+        if (title === '' || title.match(/^ *$/) !== null) {
+            alert('You need a title at least');
+            return;
         } else {
-            addProject(title, notes, duration);
+            addProject(title, notes, duration, dueDate);
             render();
             titleInput.value = '';
             notesInput.value = '';
             durationInput.value = '';
+            dueDateInput.value = '';
         };
         closeAfterSubmitNew();
         renderAddedProject(title);
@@ -36,12 +40,20 @@ function editSubmit(){
     const titleEdit = document.getElementById('titleEdit');
     const notesEdit = document.getElementById('notesEdit');
     const durationEdit = document.getElementById('durationEdit');
+    const dueDateEdit = document.getElementById('dueDateEdit');
     submitEdit.addEventListener('click', () => {
         chores.forEach((obj) => {
             if (projectTitle.textContent === obj.title) {
-                obj.notes = notesEdit.value;
-                obj.duration = durationEdit.value;
-                obj.title = titleEdit.value;
+                if (titleEdit.value === '' || titleEdit.value.match(/^ *$/) !== null) {
+                    obj.title = obj.title;
+                    obj.duration = durationEdit.value;
+                    obj.dueDate = dueDateEdit.value;
+                    } else {
+                    obj.notes = notesEdit.value;
+                    obj.duration = durationEdit.value;
+                    obj.title = titleEdit.value;
+                    obj.dueDate = dueDateEdit.value;
+                }
                 console.log(obj);
                 render();
                 populateDetailsAE(obj);

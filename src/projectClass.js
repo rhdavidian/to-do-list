@@ -6,11 +6,12 @@ export default class Project {
     //     this.category = category
     // }
 
-    constructor(title, notes, duration) {
+    constructor(title, notes, duration, dueDate) {
         this.title = title,
         this.notes = notes,
         this.duration = duration,
         this.todos = [],
-        this.completed = []
+        this.completed = [],
+        this.dueDate = dueDate
     };
 };
