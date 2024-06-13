@@ -73,8 +73,10 @@
   padding-right: 35px;
 }
 .project:hover {
-  background-color: lightcyan;
+  font-style: italic;
   cursor: pointer;
+  border-radius: 10px;
+  text-decoration: underline;
  }
 
  #todoContainer,
