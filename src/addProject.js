@@ -4,17 +4,15 @@ import { closeEditModal } from './modalOpenClose.js';
 import { hideTodoInput } from './hideTodoInput.js';
 
 let chores = [];
+chores = JSON.parse(localStorage.getItem('allProjects') || '[]' );
+
 
 function addProject(title, notes, duration, dueDate) {
     const newToDo = new Project(title, notes, duration, dueDate);
-    // this.title = 'Laundry';
-    // this.description = 'Wash, dry, and fold clothes';
-    // this.priority = 2;
-    // this.notes = 'Don\'t forget to air dry the sweater'
-    // this.category = 'Life';
     
     console.log(newToDo);
     chores.unshift(newToDo);
+    memory();
     return chores;
 };
 
@@ -40,16 +38,14 @@ function deleteProject() {
                 }
             }
         closeEditModal();
+        memory();
         });
     })
-
-
-    //Add event listener to the modal's delete button
-    //When clicked, it matches the detailsTopRow title to the obj.title with a chores.forEach(obj)
-    //if matched, create a variable for chores.indexOf(obj)
-    //chores.splice(index, 1);
-
 }
 
+function memory() {
+    localStorage.setItem('allProjects', JSON.stringify(chores));
+    // chores = JSON.parse(localStorage.getItem('allProjects') || '[]' );
+}
 
-export { addProject, chores, deleteProject };
+export { addProject, chores, deleteProject, memory };

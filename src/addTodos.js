@@ -1,6 +1,6 @@
 // Take user input from box, add it to 'todos' property (array) in the selected object/project
 
-import { chores } from './addProject'
+import { chores, memory } from './addProject'
 import { renderTodos , renderCompletedTodos} from './renderTodos';
 const addTodoBtn = document.getElementById('addTodoBtn');
 
@@ -20,6 +20,7 @@ function addTodo() {
                     todoInput.value = '';
                     console.log(obj.todos);
                     todoInput.focus();
+                    memory();
                 }
             };
         });
@@ -36,6 +37,7 @@ function moveToCompleted() {
                     obj.completed.unshift(completedTodo);
                     console.log(obj.completed);
                     deleteAfterComplete(completedTodo);
+                    memory();
                 };
             });
         });
@@ -62,6 +64,7 @@ function revertCompleted(){
                 if (projectTitle.textContent === obj.title) {
                     obj.todos.push(revertedTodo);
                     deleteAfterRevert(revertedTodo);
+                    memory();
                 };
             });
         });

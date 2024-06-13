@@ -1,4 +1,4 @@
-import { chores, addProject } from './addProject';
+import { chores, addProject, memory } from './addProject';
 import { render } from './render';
 import { closeEditModal, closeAfterSubmitNew } from './modalOpenClose';
 import { populateDetailsAE } from './populateDetailsAfterEdit';
@@ -31,6 +31,7 @@ function submit() {
         closeAfterSubmitNew();
         renderAddedProject(title);
         hideTodoInput();
+        memory();
     });
 };
 
@@ -57,6 +58,7 @@ function editSubmit(){
                 console.log(obj);
                 render();
                 populateDetailsAE(obj);
+                memory();
             }
         closeEditModal();
         });

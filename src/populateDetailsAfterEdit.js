@@ -7,7 +7,6 @@ function populateDetailsAE(obj) {
         notes.textContent = obj.notes;
         duration.textContent = obj.duration;
         dueDate.textContent = obj.dueDate;
-
 }
 
 export { populateDetailsAE }
